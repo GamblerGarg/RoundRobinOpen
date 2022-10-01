@@ -1,0 +1,35 @@
+.app{
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 10%;
+}
+body{
+	color: black;
+	background: white;
+}
+.btn-insert{
+	float: right;
+}
+.proccess{
+	display: flex;
+}
+.arrive-time{
+	margin-left: 2%;
+	width: 38%;
+}
+.birth-time{
+	margin-left: 2%;
+	width: 38%; 
+}
+.delete{
+	margin-left: 2%;
+}
+
+.chart{
+	width: 90%;
+	height: 400px;
+	margin-left: 5%;
+}
+.title{
+	font-weight: bold; 
+}
