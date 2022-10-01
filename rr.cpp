@@ -1,16 +1,10 @@
-//C++ Program to implement Round Robin 
-//Scheduling CPU Algorithm
-//Ariful Islam Batch E-64 Roll: 34
-
 #include <iostream>
 
-/*
-at 
-bt 
-time_quantum
-tat
-wt
-*/
+/*at = Arrival time,
+bt = Burst time,
+time_quantum= Quantum time
+tat = Turn around time,
+wt = Waiting time*/
 
 using namespace std;
 
@@ -30,9 +24,17 @@ int main(){
 	int rt[n];
 
 
-	
+	cout<<"Enter the Arrival time, Burst time for All the processes"<<endl;
+	for(i=0;i<n;i++)
+	{
+	  cout<<"Arrival time for process "<<i+1<<endl;
+		cin>>at[i];
+		cout<<"Burst time for process "<<i+1<<endl;
+		cin>>bt[i];
+		rt[i]=bt[i];
+	}
 
-	cout<<"Enter the value of time QUANTUM:"<<endl;
+	cout<<"Enter the value of time QUANTUM achieved in roundRobin in nano seconds:"<<endl;
 	cin>>time_quantum;
 
 	cout<<"\n\nProcess\t:Turnaround Time:Waiting Time\n\n";
@@ -48,9 +50,9 @@ int main(){
 
 		else if(rt[i]>0)
 		{
-			rt[i] -= time_quantum;
+			rt[i] =rt[i]- time_quantum;
 		
-			time += time_quantum;
+			time =time+ time_quantum;
 		
 		}
 
@@ -58,7 +60,7 @@ int main(){
 		{
 			remain--;
 			//Desplaying the result of wating, turn around time:
-			printf("Process{%f}\t:\t%d\t:\t%d\n",i+1,time-at[i],time-at[j]-bt[p]);
+			printf("Process{%d}\t:\t%d\t:\t%d\n",i+1,time-at[i],time-at[i]-bt[i]);
 			cout<<endl;
 
 			wt += time-at[i]-bt[i];
@@ -66,11 +68,16 @@ int main(){
 			temps=0;
 		}
 
-		
+		if(i == n-1)
+			i=0;
+		else if(at[i+1] <= time)
+			i++;
+		else
+			i=0;
 	}
 
-	cout<<"AWT "<<wt*1.0/n<<endl;
-	cout<<"ATG "<<tat*1.0/n<<endl;;
+	cout<<"Average waiting time "<<wt*1.0/n<<endl;
+	cout<<"Average turn around time in nano seconds"<<tat*1.0/n<<endl;;
 
 	return 0;
 }
